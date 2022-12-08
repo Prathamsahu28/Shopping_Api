@@ -3,7 +3,7 @@ using Zero.SeedWorks;
 using Zero.SharedKernel.Constants;
 using Zero.SharedKernel.Types.Result;
 
-namespace Zero.AspNetCoreServiceProjectExample.Domain
+namespace Zero.Shopping_Api.Domain
 {
     public class MobileNumber : ValueObject
     {

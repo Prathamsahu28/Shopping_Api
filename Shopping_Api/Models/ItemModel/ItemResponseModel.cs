@@ -1,8 +1,8 @@
-﻿namespace Zero.AspNetCoreServiceProjectExample.Models
+﻿namespace Zero.Shopping_Api.Models
 {
     public class ItemResponseModel
     {
-        public long ItemId { get; set; }
+        public int ItemId { get; set; }
 
               
         public string ItemName { get; set; }

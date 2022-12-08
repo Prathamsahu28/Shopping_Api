@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Zero.AspNetCoreServiceProjectExample.Domain.OrderAggregate;
-using Zero.AspNetCoreServiceProjectExample.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Zero.Shopping_Api.Domain.ItemAggregate;
+using Zero.Shopping_Api.Models;
 using Zero.SeedWorks;
 
-namespace Zero.AspNetCoreServiceProjectExample.Controllers
+
+namespace Zero.Shopping_Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -56,7 +56,7 @@ namespace Zero.AspNetCoreServiceProjectExample.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetAsyncById(long id)
+        public async Task<IActionResult> GetAsyncById(int id)
         {
 
             var item = await _ItemRepository.GetByIdAsync(id);
@@ -73,6 +73,23 @@ namespace Zero.AspNetCoreServiceProjectExample.Controllers
                 Price = item.Price  
                 
             });
+        }
+
+        [ProducesResponseType(typeof(ItemResponseModel), StatusCodes.Status200OK)]
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllActivePerson()
+        {
+            var item = await _ItemRepository.ListAllAsync();
+
+            return Ok(item.Select(m => new ItemResponseModel
+            {
+                ItemId = m.ItemId,
+                ItemName = m.ItemName,
+                Quantity = m.Quantity,
+                Price = m.Price
+
+            }));
         }
     }
 }

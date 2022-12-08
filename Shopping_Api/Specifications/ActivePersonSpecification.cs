@@ -1,7 +1,7 @@
-﻿using Zero.AspNetCoreServiceProjectExample.Domain;
+﻿using Zero.Shopping_Api.Domain;
 using Zero.SeedWorks;
 
-namespace Zero.AspNetCoreServiceProjectExample.Specifications
+namespace Zero.Shopping_Api.Specifications
 
 {
     public class ActivePersonSpecification : BaseSpecification<Customer>

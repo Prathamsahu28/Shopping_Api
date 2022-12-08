@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Zero.SharedKernel.Constants;
 
-namespace Zero.AspNetCoreServiceProjectExample.Models
+namespace Zero.Shopping_Api.Models
 {
     public class CustomerRequestModel
     {

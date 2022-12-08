@@ -1,10 +1,10 @@
 ﻿using Zero.SharedKernel.Types.Result;
 
-namespace Zero.AspNetCoreServiceProjectExample.Errors
+namespace Zero.Shopping_Api.Errors
 {
-    public class customerError : Error
+    public class CustomerError : Error
     {
-        public customerError(string message) : base(message)
+        public CustomerError(string message) : base(message)
         {
 
         }

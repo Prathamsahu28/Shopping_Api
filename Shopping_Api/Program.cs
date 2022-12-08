@@ -1,6 +1,6 @@
 
 using System.Reflection;
-using Zero.AspNetCoreServiceProjectExample.Data;
+using Zero.Shopping_Api.Data;
 using Zero.EFCoreSpecification;
 
 var builder = WebApplication.CreateBuilder(args);

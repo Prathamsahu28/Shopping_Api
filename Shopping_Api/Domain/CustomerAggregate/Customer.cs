@@ -1,12 +1,12 @@
 ﻿using Zero.SeedWorks;
 using Zero.SharedKernel.Types.Result;
-using Zero.AspNetCoreServiceProjectExample.Errors;
+using Zero.Shopping_Api.Errors;
 
-namespace Zero.AspNetCoreServiceProjectExample.Domain
+namespace Zero.Shopping_Api.Domain
 {
     public class Customer : Entity, IAggregateRoot
     {
-        public long Id { get; private set; }
+        public int CustomerId { get; private set; }
         public CustomerName Name { get; private set; }
       
         public MobileNumber? MobileNumber { get; private set; }

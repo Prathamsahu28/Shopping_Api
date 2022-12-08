@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Zero.EFCoreSpecification;
 
-namespace Zero.AspNetCoreServiceProjectExample.Data
+namespace Zero.Shopping_Api.Data
 {
     public class ApplicationDbContext : DbContextBase<ApplicationDbContext>
     {

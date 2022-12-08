@@ -1,10 +1,11 @@
 ﻿using Zero.SeedWorks;
+using Zero.SharedKernel.Types.Result;
 
-namespace Zero.AspNetCoreServiceProjectExample.Domain.OrderAggregate
+namespace Zero.Shopping_Api.Domain.ItemAggregate
 {
     public class Item : Entity, IAggregateRoot
     {
-        public long ItemId { get; private set; }
+        public int ItemId { get; private set; }
 
         public string ItemName { get; private set; }
 
@@ -23,6 +24,17 @@ namespace Zero.AspNetCoreServiceProjectExample.Domain.OrderAggregate
             Quantity = quantity;
             Price = price;
                 
+        }
+
+        public Result Update(int quantity)
+        {
+            
+
+            Quantity = quantity;
+
+           
+
+            return Result.Success();
         }
     }
 }

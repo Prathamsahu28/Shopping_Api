@@ -1,6 +1,6 @@
-﻿namespace Zero.AspNetCoreServiceProjectExample.Errors
+﻿namespace Zero.Shopping_Api.Errors
 {
-    public class DeletedPersonError : customerError
+    public class DeletedPersonError : CustomerError
     {
         public DeletedPersonError() : base("Person Is Deleted. ")
         {

@@ -1,14 +1,14 @@
-﻿using Zero.AspNetCoreServiceProjectExample.Domain;
+﻿using Zero.Shopping_Api.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Zero.AspNetCoreServiceProjectExample.Data.Configurations
+namespace Zero.Shopping_Api.Data.Configurations
 {
     public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
     {
         public void Configure(EntityTypeBuilder<Customer> builder)
         {
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => x.CustomerId);
 
             builder.Property(x => x.Name)
                 .HasConversion(x => x.Value, x => CustomerName.Create(x).Value)

@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 
-namespace Zero.AspNetCoreServiceProjectExample.Models
+namespace Zero.Shopping_Api.Models
 {
     public class ItemRequestModel
     {
-       
+
 
         [Required(ErrorMessage = "Item Name Is Required.")]
         public string ItemName { get; set; }
