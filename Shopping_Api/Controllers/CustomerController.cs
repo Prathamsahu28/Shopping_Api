@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Zero.SeedWorks;
-using Zero.AspNetCoreServiceProjectExample.Domain;
-using Zero.AspNetCoreServiceProjectExample.Models;
-using Zero.AspNetCoreServiceProjectExample.Specifications;
+using Zero.Shopping_Api.Domain;
+using Zero.Shopping_Api.Models;
+using Zero.Shopping_Api.Specifications;
 
 namespace Zero.AspNetCoreServiceProjectExample.Controllers
 {
@@ -34,7 +34,7 @@ namespace Zero.AspNetCoreServiceProjectExample.Controllers
             {
                 EmailAddress = m.EmailAddress?.Value,
                 MobileNumber = m.MobileNumber?.Value,
-                Id = m.Id,
+                Id = m.CustomerId,
                 Name = m.Name,
                
             }));
@@ -50,7 +50,7 @@ namespace Zero.AspNetCoreServiceProjectExample.Controllers
 
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetAsyncById(long id)
+        public async Task<IActionResult> GetAsyncById(int id)
         {
 
             var person = await _personRepository.GetByIdAsync(id);
@@ -61,7 +61,7 @@ namespace Zero.AspNetCoreServiceProjectExample.Controllers
             {
                 EmailAddress = person.EmailAddress?.Value,
                 MobileNumber = person.MobileNumber?.Value,
-                Id = person.Id,
+                Id = person.CustomerId,
                 Name = person.Name,
               
             });
@@ -114,7 +114,7 @@ namespace Zero.AspNetCoreServiceProjectExample.Controllers
 
                     await _personRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
 
-                    return Ok(person.Id);
+                    return Ok(person.CustomerId);
                 }
             }
             return ValidationProblem(ModelState);
