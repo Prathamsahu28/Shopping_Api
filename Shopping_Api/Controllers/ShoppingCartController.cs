@@ -107,7 +107,21 @@ namespace Shopping_Api.Controllers
             }));
         }
 
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync(int id, CancellationToken cancellationToken)
+        {
+            var cart = await _ShoppingCartRepository.GetByIdAsync(id);
+
+           if (cart == null) return NotFound();
+
+            //var book = new Books() { Id = cart.CartId };
+            
+             _ShoppingCartRepository.Delete(cart);
+            await _ShoppingCartRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
+          return NoContent();
+        }
 
     }
 }
