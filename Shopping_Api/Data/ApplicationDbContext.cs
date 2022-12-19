@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Shopping_Api.Domain.OrderAggregate;
 using System.Reflection;
 using Zero.EFCoreSpecification;
 
@@ -16,5 +17,6 @@ namespace Zero.Shopping_Api.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
+      // public DbSet<Order> order { get; set; }
     }
 }

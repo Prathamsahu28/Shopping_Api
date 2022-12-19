@@ -1,10 +1,12 @@
 ﻿namespace Shopping_Api.Models
 {
-    public class ShoppingCartRequest
+    public class CartRequest
     {
         public int CustomerId { get; set; }
 
-        public int ItemId { get; set; }
+
+        public int ProductId { get; set; }
+        
 
         public int Quantity { get; set; }
     }
