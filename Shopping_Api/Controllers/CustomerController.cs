@@ -6,7 +6,7 @@ using Zero.Shopping_Api.Specifications;
 
 namespace Zero.AspNetCoreServiceProjectExample.Controllers
 {
-    [Route("api/person")]
+    [Route("api/Customer")]
     [ApiController]
     public class CustomerController : ControllerBase
     {
@@ -19,53 +19,6 @@ namespace Zero.AspNetCoreServiceProjectExample.Controllers
 
         }
 
-        /// <summary>
-        /// Fetch the List Of Person 
-        /// </summary>
-        /// <response code="200">Person added!</response>
-        [ProducesResponseType(typeof(CustomerResponseModel), StatusCodes.Status200OK)]
-        
-        [HttpGet("/api/persons")]
-        public async Task<IActionResult> GetAllActivePerson()
-        {
-            var persons = await _personRepository.ListAsync(new ActivePersonSpecification());
-
-            return Ok(persons.Select(m => new CustomerResponseModel
-            {
-                EmailAddress = m.EmailAddress?.Value,
-                MobileNumber = m.MobileNumber?.Value,
-                Id = m.CustomerId,
-                Name = m.Name,
-               
-            }));
-        }
-        /// <summary>
-        /// Fetch the Detail Of Person By Id 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <response code="200">Get Selected Person Data</response>
-        /// <response code="404">When the Person Data Is Deleted or Not Exist</response>
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(typeof(CustomerResponseModel), StatusCodes.Status200OK)]
-
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetAsyncById(int id)
-        {
-
-            var person = await _personRepository.GetByIdAsync(id);
-
-            if (person == null) return NotFound();
-
-            return Ok(new CustomerResponseModel
-            {
-                EmailAddress = person.EmailAddress?.Value,
-                MobileNumber = person.MobileNumber?.Value,
-                Id = person.CustomerId,
-                Name = person.Name,
-              
-            });
-        }
 
         /// <summary>
         /// 
@@ -104,7 +57,7 @@ namespace Zero.AspNetCoreServiceProjectExample.Controllers
                     isValid = false;
                 }
 
-               
+
 
                 if (isValid)
                 {
@@ -119,6 +72,56 @@ namespace Zero.AspNetCoreServiceProjectExample.Controllers
             }
             return ValidationProblem(ModelState);
         }
+
+        /// <summary>
+        /// Fetch the List Of Person 
+        /// </summary>
+        /// <response code="200">Person added!</response>
+        [ProducesResponseType(typeof(CustomerResponseModel), StatusCodes.Status200OK)]
+        
+        [HttpGet("/api/GetAllCustomerList")]
+        public async Task<IActionResult> GetAllActivePerson()
+        {
+            var persons = await _personRepository.ListAsync(new ActivePersonSpecification());
+
+            return Ok(persons.Select(m => new CustomerResponseModel
+            {
+                EmailAddress = m.EmailAddress?.Value,
+                MobileNumber = m.MobileNumber?.Value,
+                Id = m.CustomerId,
+                Name = m.Name,
+               
+            }));
+        }
+        /// <summary>
+        /// Fetch the Detail Of Person By Id 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <response code="200">Get Selected Person Data</response>
+        /// <response code="404">When the Person Data Is Deleted or Not Exist</response>
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(CustomerResponseModel), StatusCodes.Status200OK)]
+
+
+        [HttpGet("CustomerByID/{id}")]
+        public async Task<IActionResult> GetAsyncById(int id)
+        {
+
+            var person = await _personRepository.GetByIdAsync(id);
+
+            if (person == null) return NotFound();
+
+            return Ok(new CustomerResponseModel
+            {
+                EmailAddress = person.EmailAddress?.Value,
+                MobileNumber = person.MobileNumber?.Value,
+                Id = person.CustomerId,
+                Name = person.Name,
+              
+            });
+        }
+
+       
         /// <summary>
         /// Update the data of selected Person Id
         /// </summary>
